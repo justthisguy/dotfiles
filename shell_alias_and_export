@@ -1,0 +1,59 @@
+alias mongostart='mongod run --config /usr/local/etc/mongod.conf'
+
+# Turn on color
+export TERM=xterm-color
+alias ls='ls -G'
+
+# Other command aliases
+alias ll='ls -hl'
+alias la='ls -a'
+alias lla='ls -lah'
+alias lll='lla'
+alias l='less'
+alias m='more'
+alias h='history'
+alias ..='cd ..'
+alias ...='cd .. ; cd ..'
+alias g='grep --color=auto'
+
+##
+#  Development
+##
+alias gems='gem list'
+alias cuk='nocorrect cucumber'
+alias rmorig="find . -iname '*.orig' -exec mv \{\} ~/.Trash \;"
+alias webhook="ultrahook quux 3000"
+alias console_with_logs='tail -f log/developent.log & rails c'
+
+##
+# RAILS command aliases
+##
+alias bi='bundle install'
+alias bilocal='bundle install --without production'
+alias rspec='nocorrect rspec'
+alias dbreboot='rake db:drop;rake db:create;rake db:migrate;rake db:seed; rake db:test:prepare'
+alias eb="~/bin/editbundle"
+
+##
+# GIT
+##
+alias gs='git status'
+alias gc='git commit'
+alias ga='git add'
+alias gitundo='git reset --soft HEAD~'
+
+
+# Other command aliases
+alias ducks='du -cks * | sort -rn|head -11'
+alias ms="mysql -u root"
+alias ams="mysqladmin -u root"
+alias server='mongrel_rails start'
+
+alias bonjourstart="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist"
+alias bonjourstop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist"
+
+
+export GIT_EDITOR='subl -n -w'
+export EDITOR='subl -n'
+export VISUAL='subl -n'
+export CLICOLOR='yes'
