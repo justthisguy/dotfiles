@@ -1,0 +1,87 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_with_fields": true,
+	"binary_file_patterns":
+	[
+		"generated/*",
+		"*.tbz2",
+		"*.gzip",
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"log/*"
+	],
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"command": "noop",
+	"create_window_at_startup": false,
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		"*.class",
+		"*.psd",
+		"*.db",
+		"*.sublime-workspace"
+	],
+	"folder_exclude_patterns":
+	[
+		"node_modules",
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"tmp"
+	],
+	"font_face": "Source Code Pro ExtraLight",
+	"font_face_other": "Everson Mono Latin 6, Larabiefont, New, Cinnamon Cake,  monofur, Inconsolata for Powerline, Menlo, 'Fantasque Sans Mono', 'Osaka-Mono', gottem, Meslo LG S DZ, Liberation Mono, Ubuntu Mono, Fira Mono, Consolas, Borg Sans Mono, Hack, Mensch, NO Menlo for Powerline NO, Ubuntu Mono, InputMonoNarrow Light, Input, InputMonoCondensed Light, InputSansCondensed Light, Meslo LG S, Monaco, Anonymous Pro, Andale Mono, DejaVu Sans, DejaVu Sans Mono, APL385 Unicode, FreeMono, Inconsolata-dz, Menlo",
+	"font_options":
+	[
+		"no_bold",
+		"subpixel_antialias",
+		"no_round"
+	],
+	"font_size": 16.0,
+	"gutter": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"keys": "cmd+shift+f",
+	"margin": 2,
+	"match_brackets_angle": true,
+	"show_minimap": false,
+	"tab_size": 2,
+	"theme": "Soda Dark 3.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_simple_full_screen": true
+}

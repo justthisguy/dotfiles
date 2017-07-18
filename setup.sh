@@ -4,6 +4,8 @@ ln -s ~/.dotfiles/oh_my_zsh ~/.oh_my_zsh
 ln -s ~/.dotfiles/pryrc     ~/.pryrc
 ln -s ~/.dotfiles/zshrc     ~/.zshrc
 ln -s ~/.dotfiles/shell_alias_and_export ~/.shell_alias_and_export
+ln -s ~/.dotfiles/Preferences.sublime-settings ~'/Library/Application Support/Sublime Text 3/Packages/User/'
+
 
 cp ~/.gemrc                           ~/.dotfiles/gemrc
 cp ~/.gitconfig                       ~/.dotfiles/gitconfig
