@@ -56,15 +56,15 @@
 		"CVS",
 		"tmp"
 	],
-	"font_face": "Source Code Pro ExtraLight",
-	"font_face_other": "Everson Mono Latin 6, Larabiefont, New, Cinnamon Cake,  monofur, Inconsolata for Powerline, Menlo, 'Fantasque Sans Mono', 'Osaka-Mono', gottem, Meslo LG S DZ, Liberation Mono, Ubuntu Mono, Fira Mono, Consolas, Borg Sans Mono, Hack, Mensch, NO Menlo for Powerline NO, Ubuntu Mono, InputMonoNarrow Light, Input, InputMonoCondensed Light, InputSansCondensed Light, Meslo LG S, Monaco, Anonymous Pro, Andale Mono, DejaVu Sans, DejaVu Sans Mono, APL385 Unicode, FreeMono, Inconsolata-dz, Menlo",
+	"font_face": "Menlo",
+	"font_face_other": "Source Code Variable ExtraLight, Everson Mono Latin 6, Larabiefont, New, Cinnamon Cake,  monofur, Inconsolata for Powerline, Menlo, 'Fantasque Sans Mono', 'Osaka-Mono', gottem, Meslo LG S DZ, Liberation Mono, Ubuntu Mono, Fira Mono, Consolas, Borg Sans Mono, Hack, Mensch, NO Menlo for Powerline NO, Ubuntu Mono, InputMonoNarrow Light, Input, InputMonoCondensed Light, InputSansCondensed Light, Meslo LG S, Monaco, Anonymous Pro, Andale Mono, DejaVu Sans, DejaVu Sans Mono, APL385 Unicode, FreeMono, Inconsolata-dz, Menlo",
 	"font_options":
 	[
 		"no_bold",
 		"subpixel_antialias",
 		"no_round"
 	],
-	"font_size": 16.0,
+	"font_size": 24.0,
 	"gutter": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -80,7 +80,7 @@
 	"match_brackets_angle": true,
 	"show_minimap": false,
 	"tab_size": 2,
-	"theme": "Soda Dark 3.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"use_simple_full_screen": true

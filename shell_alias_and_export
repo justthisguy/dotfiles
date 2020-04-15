@@ -15,6 +15,8 @@ alias h='history'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 alias g='grep --color=auto'
+alias yo='say yo'
+alias party='say lets get this party started'
 
 ##
 #  Development
@@ -37,10 +39,14 @@ alias eb="~/bin/editbundle"
 ##
 # GIT
 ##
-alias gs='git status'
+alias gems='git status'
 alias gc='git commit'
 alias ga='git add'
+alias gs='git status'
 alias gitundo='git reset --soft HEAD~'
+alias stash='git stash'
+alias pop='git stash pop'
+
 
 
 # Other command aliases

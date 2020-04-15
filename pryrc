@@ -4,8 +4,8 @@ Pry.commands.alias_command 'nn', 'next'
 Pry.config.pager = false
 Pry.config.editor = "edit"
 
-require 'awesome_print'
-AwesomePrint.irb!
+#require 'awesome_print'
+#AwesomePrint.irb!
 
-require "awesome_print"
-AwesomePrint.pry!
+#require "awesome_print"
+#AwesomePrint.pry!

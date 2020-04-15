@@ -29,38 +29,26 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(bower brew-cask history history-substring-search osx postgres )
-plugins=(brew bundler cp gem git git-extras heroku rails rake )
-# git-flow git-flow-avh git-hubflow git-prompt git-remote-branch gitfast github gitignore
-
+plugins=( brew bundler cp gem git git-extras heroku rails rake  )
+# git-flow git-flow-avh git-hubflow git-prompt git-remote-branch gitfast github gitignore docker docker-compose docker-machine
 
 source $ZSH/oh-my-zsh.sh
 
 # iTerm2 does not set this properly??
-export LC_CTYPE="utf-8"
+# export LC_CTYPE="utf-8"
 
 ##
 ## PATH
 ##
 homebrew=/usr/local/bin:/usr/local/sbin
-rbenv=~/.rbenv/shims
-anaconda=~/dev/devapps/anaconda/bin
-export PATH=./bin:~/bin:$homebrew:$rbenv:$anaconda:$PATH:
+export PATH=./bin:~/bin:$homebrew:$PATH:
+#rbenv=~/.rbenv/shims
+#export PATH=./bin:~/bin:$homebrew:$rbenv:$PATH:
 
 ##
 ## POSTGRESQL
 ##
 export PGHOST=/tmp
-
-##
-# DELUXE-USR-LOCAL-BIN-INSERT
-# (do not remove this comment)
-##
-# echo $PATH | grep -q -s "/usr/local/bin"
-# if [ $? -eq 1 ] ; then
-#     PATH="/usr/local/bin:$PATH"
-#     export PATH
-# fi
-### need this up front so frack it. SEE ABOVE
 
 ####
 # docker
@@ -71,6 +59,11 @@ export PGHOST=/tmp
 ###   My personal stuff
 ####
 source ~/.shell_alias_and_export
+
+##
+## ASDF version manager manager
+##
+. /usr/local/opt/asdf/asdf.sh
 
 # echo 'end my .zshrc'
 # echo $PATH
