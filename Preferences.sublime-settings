@@ -1,4 +1,5 @@
 {
+	"always_show_minimap_viewport": false,
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_with_fields": true,
 	"binary_file_patterns":
@@ -21,9 +22,10 @@
 		"*.zip",
 		"log/*"
 	],
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 	"command": "noop",
 	"create_window_at_startup": false,
+	"draw_minimap_border": false,
 	"file_exclude_patterns":
 	[
 		"*.pyc",
@@ -56,7 +58,7 @@
 		"CVS",
 		"tmp"
 	],
-	"font_face": "Menlo",
+	"font_face": "Source Code Variable ExtraLight",
 	"font_face_other": "Source Code Variable ExtraLight, Everson Mono Latin 6, Larabiefont, New, Cinnamon Cake,  monofur, Inconsolata for Powerline, Menlo, 'Fantasque Sans Mono', 'Osaka-Mono', gottem, Meslo LG S DZ, Liberation Mono, Ubuntu Mono, Fira Mono, Consolas, Borg Sans Mono, Hack, Mensch, NO Menlo for Powerline NO, Ubuntu Mono, InputMonoNarrow Light, Input, InputMonoCondensed Light, InputSansCondensed Light, Meslo LG S, Monaco, Anonymous Pro, Andale Mono, DejaVu Sans, DejaVu Sans Mono, APL385 Unicode, FreeMono, Inconsolata-dz, Menlo",
 	"font_options":
 	[
@@ -64,7 +66,7 @@
 		"subpixel_antialias",
 		"no_round"
 	],
-	"font_size": 24.0,
+	"font_size": 18.0,
 	"gutter": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -78,6 +80,9 @@
 	"keys": "cmd+shift+f",
 	"margin": 2,
 	"match_brackets_angle": true,
+	"rulers":
+	[
+	],
 	"show_minimap": false,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
