@@ -1,5 +1,4 @@
 {
-	"always_show_minimap_viewport": false,
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_with_fields": true,
 	"binary_file_patterns":
@@ -22,10 +21,9 @@
 		"*.zip",
 		"log/*"
 	],
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"color_scheme": "Packages/Babel/Monokai Phoenix.tmTheme",
 	"command": "noop",
 	"create_window_at_startup": false,
-	"draw_minimap_border": false,
 	"file_exclude_patterns":
 	[
 		"*.pyc",
@@ -66,7 +64,7 @@
 		"subpixel_antialias",
 		"no_round"
 	],
-	"font_size": 18.0,
+	"font_size": 20.0,
 	"gutter": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -80,13 +78,10 @@
 	"keys": "cmd+shift+f",
 	"margin": 2,
 	"match_brackets_angle": true,
-	"rulers":
-	[
-	],
 	"show_minimap": false,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"use_simple_full_screen": true
+	"use_simple_full_screen": true,
 }
