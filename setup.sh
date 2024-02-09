@@ -1,5 +1,6 @@
 ln -s ~/.dotfiles/gemrc     ~/.gemrc
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/irbrc     ~/.irbrc
 ln -s ~/.dotfiles/oh_my_zsh ~/.oh_my_zsh
 ln -s ~/.dotfiles/pryrc     ~/.pryrc
 ln -s ~/.dotfiles/zshrc     ~/.zshrc
@@ -13,6 +14,7 @@ ln -s ~/.dotfiles/41m.plugin.zsh ~/.oh-my-zsh/custom/41m.plugin.zsh
 
 cp ~/.gemrc                           ~/.dotfiles/gemrc
 cp ~/.gitconfig                       ~/.dotfiles/gitconfig
+cp ~/.irbrc                           ~/.dotfiles/irbrc
 cp ~/.oh_my_zsh                       ~/.dotfiles/oh_my_zsh
 cp ~/.pryrc                           ~/.dotfiles/pryrc
 cp ~/.shell_alias_and_export          ~/.dotfiles/shell_alias_and_export
