@@ -4,7 +4,7 @@
 
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -62,7 +62,7 @@ source ~/.shell_alias_and_export
 ##
 ## ASDF version manager manager
 ##
-. /usr/local/opt/asdf/libexec/asdf.sh
+##. /usr/local/opt/asdf/libexec/asdf.sh
 
 ##
 ## libxslt
@@ -123,6 +123,8 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# mise-en-place < https://mise.jdx.dev/ >
+eval "$(/Users/workshop/.local/bin/mise activate zsh)"
 
 
 
