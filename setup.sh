@@ -11,7 +11,7 @@ ln -s ~/.dotfiles/Preferences.sublime-settings ~'/Library/Application Support/Su
 ln -s ~/.dotfiles/41m.zsh-theme  ~/.oh-my-zsh/themes/41m.zsh-theme
 ln -s ~/.dotfiles/41m.plugin.zsh ~/.oh-my-zsh/custom/41m.plugin.zsh
 
-
+// old way
 cp ~/.gemrc                           ~/.dotfiles/gemrc
 cp ~/.gitconfig                       ~/.dotfiles/gitconfig
 cp ~/.irbrc                           ~/.dotfiles/irbrc
