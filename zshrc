@@ -107,8 +107,9 @@ curl="/usr/local/opt/curl/bin"
 ##
 
 homebrew=/usr/local/bin:/usr/local/sbin
+sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 
-export PATH=./bin:~/bin:/bin:$homebrew:$icu4c:$libxslt:$curl:$PATH:
+export PATH=./bin:~/bin:/bin:$homebrew:$icu4c:$libxslt:$curl:$PATH:$sublime
 
 # echo $PATH
 
@@ -123,8 +124,11 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# mise-en-place < https://mise.jdx.dev/ >
+### mise-en-place < https://mise.jdx.dev/ >
 eval "$(/Users/workshop/.local/bin/mise activate zsh)"
+
+### fzf
+source <(fzf --zsh)
 
 
 

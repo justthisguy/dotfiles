@@ -21,7 +21,8 @@
 		"*.zip",
 		"log/*"
 	],
-	"color_scheme": "Packages/Babel/Monokai Phoenix.tmTheme",
+	"color_scheme": "Packages/Monokai Dark/Monokai Dark.tmTheme",
+	"dark_color_scheme": "Packages/Babel/Monokai Phoenix.tmTheme",
 	"command": "noop",
 	"create_window_at_startup": false,
 	"file_exclude_patterns":
@@ -69,7 +70,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"indent_guide_options":
 	[
@@ -84,4 +85,5 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"use_simple_full_screen": true,
+	"index_files": true,
 }

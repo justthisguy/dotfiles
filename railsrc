@@ -1,0 +1,7 @@
+--database=postgresql
+--skip-test-unit
+--skip-system-test
+--skip-bundle
+--asset-pipeline=propshaft
+--css=tailwind
+-m ~/.dotfiles/template.rb
