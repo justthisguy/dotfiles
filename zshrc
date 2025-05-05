@@ -64,52 +64,53 @@ source ~/.shell_alias_and_export
 ##
 ##. /usr/local/opt/asdf/libexec/asdf.sh
 
-##
-## libxslt
-##
-#libxslt ="/usr/local/opt/libxslt/bin"
+# /usr/local/opt DOES NOT EXIST
+          ##
+          ## libxslt
+          ##
+          #libxslt ="/usr/local/opt/libxslt/bin"
 
-# For compilers to find libxslt you may need to set:
-#   export LDFLAGS="-L/usr/local/opt/libxslt/lib"
-#   export CPPFLAGS="-I/usr/local/opt/libxslt/include"
+          # For compilers to find libxslt you may need to set:
+          #   export LDFLAGS="-L/usr/local/opt/libxslt/lib"
+          #   export CPPFLAGS="-I/usr/local/opt/libxslt/include"
 
-# For pkg-config to find libxslt you may need to set:
-#   export PKG_CONFIG_PATH="/usr/local/opt/libxslt/lib/pkgconfig"
+          # For pkg-config to find libxslt you may need to set:
+          #   export PKG_CONFIG_PATH="/usr/local/opt/libxslt/lib/pkgconfig"
 
+          ##
+          ## zsh-icu4c
+          ##
+          # icu4c=/usr/local/opt/icu4c/bin
 
-##
-## zsh-icu4c
-##
-icu4c=/usr/local/opt/icu4c/bin
+          # For compilers to find icu4c you may need to set:
+          #   export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+          #   export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 
-# For compilers to find icu4c you may need to set:
-#   export LDFLAGS="-L/usr/local/opt/icu4c/lib"
-#   export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+          # For pkg-config to find icu4c you may need to set:
+          #   export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
-# For pkg-config to find icu4c you may need to set:
-#   export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+          ##
+          ## curl
+          ##
+          # curl="/usr/local/opt/curl/bin"
 
-##
-## curl
-##
-curl="/usr/local/opt/curl/bin"
+          # For compilers to find curl you may need to set:
+          #   export LDFLAGS="-L/usr/local/opt/curl/lib"
+          #   export CPPFLAGS="-I/usr/local/opt/curl/include"
 
-# For compilers to find curl you may need to set:
-#   export LDFLAGS="-L/usr/local/opt/curl/lib"
-#   export CPPFLAGS="-I/usr/local/opt/curl/include"
-
-# For pkg-config to find curl you may need to set:
-#   export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+          # For pkg-config to find curl you may need to set:
+          #   export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
 
 
 ##
 ## PATH
 ##
 
-homebrew=/usr/local/bin:/usr/local/sbin
+homebrew=/opt/homebrew/bin:/usr/local/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+windsurf="/Users/workshop/.codeium/windsurf/bin"
 
-export PATH=./bin:~/bin:/bin:$homebrew:$icu4c:$libxslt:$curl:$PATH:$sublime
+export PATH=./bin:~/bin:/bin:$homebrew:$PATH:$sublime:$windsurf:
 
 # echo $PATH
 
@@ -157,4 +158,6 @@ source <(fzf --zsh)
 #   brew services start postgresql
 # Or, if you don't want/need a background service you can just run:
 #   pg_ctl -D /usr/local/var/postgres start
+
+
 

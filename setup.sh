@@ -3,7 +3,7 @@ ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/irbrc     ~/.irbrc
 ln -s ~/.dotfiles/oh_my_zsh ~/.oh_my_zsh
 ln -s ~/.dotfiles/pryrc     ~/.pryrc
-ln -s ~/.dotfiles/railrc    ~/.railrc
+ln -s ~/.dotfiles/railsrc   ~/.railsrc
 ln -s ~/.dotfiles/zshrc     ~/.zshrc
 
 
