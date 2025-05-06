@@ -1,10 +1,16 @@
-puts "++++++++++++++ we are starting"
+puts "++++++++++++++ template is starting"
+
+# --skip-bundle
 
 
 # Main setup
 source_paths
-directory "~/.dotfiles/rails/views/pages",  "app/views/pages"
-copy_file "~/.dotfiles/rails/pages_controller.rb", "app/controllers/pages_controller.rb"
+directory "~/.dotfiles/rails/app/",  "app/"
+directory "~/.dotfiles/rails/lib/",  "lib/"
+directory "~/.dotfiles/rails/spec/",  "spec/"
+environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development'
+
+# copy_file "~/.dotfiles/rails/pages_controller.rb", "app/controllers/pages_controller.rb"
 
 def git_commit comment
   puts "============== git commit #{comment}!"
@@ -12,7 +18,6 @@ def git_commit comment
   git add: "."
   git commit: %Q{ -m "#{comment}!" }
 end
-
 
 def add_gems
   # Add necessary gems to the Gemfile
@@ -24,16 +29,15 @@ def add_gems
   # gem "bcrypt", "~> 3.1" # Used by Rodauth for password hashing
   # gem "tilt", "~> 2.4" # Used by Rodauth for rendering built-in view and email templates
 
-  ### Tailwind CSS
+  ### design and CSS
   gem "tailwindcss-ruby"
-  gem "tailwindcss-rails"
-
+  # gem "tailwindcss-rails" # included by default
+  gem "flowbite", "~> 3.1"
 
   gem_group :development, :test do
     gem "database_cleaner"
-    gem "factory_bot_rails", git: "http://github.com/thoughtbot/factory_bot_rails"
+    gem "factory_bot_rails"
     gem "rspec-rails"
-
   end
 
   gem_group :development do
@@ -55,15 +59,16 @@ def add_gems
   end
 
   git_commit "gems added"
-
 end
 
+# Set up RSpec and related configurations
 def config_rspec
-  # Set up RSpec and related configurations
   puts "*********** start config_rspec"
   generate "rspec:install"
+
   git_commit "does rspec:install"
 
+  # directory "config", force: true
   # directory "spec", force: true
   # run "rm -r test" if Dir.exist?("test")
   # copy_file ".rubocop.yml"
@@ -73,23 +78,80 @@ def config_rspec
   ## setup SimpleCov -- https://github.com/simplecov-ruby/simplecov
 end
 
+# Rodauth Rails -- DEPENDS on tailwind so must happen after
 def config_rodauth_rails
   # Add rodauth_rails CSS
   puts "*********** start config rodauth-rails"
-  generate "rodauth:install"
+  generate "rodauth:install users 'given_name', 'family_name', 'other_names'"#, 'announcements_last_read_at:datetime', 'admin:boolean'"
+  generate "rodauth:views --css=tailwind --all"
+  insert_into_file "app/misc/rodauth_main.rb", ", :internal_request", after: ":close_account"
+
+
+
   git_commit "adds rodauth-rails"
 end
 
 def config_tailwind
-  # does tailwindcss:install
   puts "*********** start config_tailwind"
   rails_command "tailwindcss:install"
   git_commit "does tailwindcss:install"
 end
 
+
+def config_flowbite
+  puts "*********** start config_flowbite"
+
+  # copy_file "~/.dotfiles/rails/views/layouts/_navbar.html.erb", "app/views/layouts/_navbar.html.erb"
+
+  insert_into_file "app/javascript/application.js", "import 'flowbite';\n"
+  insert_into_file "config/importmap.rb", "pin 'flowbite', to: 'https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.turbo.min.js'"
+  insert_into_file "app/views/layouts/application.html.erb", "  <div class='w-full fixed top-0 left-0 right-0 z-50'>\n    <%= render 'layouts/navbar' %>\n  </div>\n", after: "<body>\n"
+
+  git_commit "does flowbite setup"
+end
+
+
 def config_routes
   route "root to: 'pages#welcome'"
+
+  insert_into_file "config/routes.rb", "  ###\n  # Static pages\n  ###\n", before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'about'   => 'pages#about',   as: 'about'\n"     , before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'contact' => 'pages#contact', as: 'contact_us'\n", before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'home'    => 'pages#home',    as: 'home'\n"      , before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'terms'   => 'pages#terms',   as: 'terms'\n"     , before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'privacy' => 'pages#privacy', as: 'privacy'\n"   , before: "\nend"
+  insert_into_file "config/routes.rb", "  get 'welcome' => 'pages#welcome', as: 'welcome'\n"   , before: "\nend"
 end
+
+################################
+
+def edit_files
+  in_root do
+    migration = Dir.glob("db/migrate/*").max_by { |f| File.mtime(f) }
+    gsub_file migration, /:admin/, ":admin, default: false"
+  end
+
+  inject_into_file("app/models/user.rb", "omniauthable, :", after: "devise :")
+end
+
+
+def add_users
+  route "root to: 'home#index'"
+  # generate "devise:install"
+
+  generate :devise, "User", "first_name", "last_name", "announcements_last_read_at:datetime", "admin:boolean"
+
+  # Set admin default to false
+  in_root do
+    migration = Dir.glob("db/migrate/*").max_by { |f| File.mtime(f) }
+    gsub_file migration, /:admin/, ":admin, default: false"
+  end
+
+  gsub_file "config/initializers/devise.rb", /  # config.secret_key = .+/, "  config.secret_key = Rails.application.credentials.secret_key_base"
+
+  inject_into_file("app/models/user.rb", "omniauthable, :", after: "devise :")
+end
+
 
 
 
@@ -152,10 +214,16 @@ after_bundle do
   puts "++++++++++++++ after_bundle"
   # stop_spring -- not using spring
 
+  rails_command "turbo:install"
+  rails_command "stimulus:install"
+
   config_routes
   config_rspec
+  # config_tailwind
+  config_flowbite
+
+  # rodauth installation depends on tailwind
   config_rodauth_rails
-  config_tailwind
 
   # add_active_storage
   # add_users
@@ -168,6 +236,8 @@ after_bundle do
   ### Database setup
   rails_command "db:create"
   rails_command "db:migrate"
+
+  rails_command "user:create_first"
 
 end
 
