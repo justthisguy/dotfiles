@@ -48,6 +48,8 @@ def add_gems
     # gem "rubocop-rails", require: false
     # gem "rubocop-rspec"
 
+    gem "ruby-lsp-rails-factory-bot"
+
     # for solargraph
     gem "solargraph"
     gem "standard"
