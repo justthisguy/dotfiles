@@ -29,6 +29,8 @@ def add_gems
   # gem "bcrypt", "~> 3.1" # Used by Rodauth for password hashing
   # gem "tilt", "~> 2.4" # Used by Rodauth for rendering built-in view and email templates
 
+  ## for when we add phlex # gem "rodauth_phlex"
+
   ### design and CSS
   gem "tailwindcss-ruby"
   # gem "tailwindcss-rails" # included by default
@@ -84,7 +86,8 @@ end
 def config_rodauth_rails
   # Add rodauth_rails CSS
   puts "*********** start config rodauth-rails"
-  generate "rodauth:install users 'given_name', 'family_name', 'other_names'"#, 'announcements_last_read_at:datetime', 'admin:boolean'"
+  generate "rodauth:install users" #  --argon2 for when security is an issue
+
   generate "rodauth:views --css=tailwind --all"
   insert_into_file "app/misc/rodauth_main.rb", ", :internal_request", after: ":close_account"
 
@@ -235,7 +238,17 @@ after_bundle do
   # add_fontawesome
 
 
+
+  inject_into_file("app/controllers/application_controller.rb",
+                   "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n",
+                   before: "end")
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "      <div><%= render 'layouts/alert'%></div>\n\n",
+                   after: /<main [\w=" -]+>\n/
+
   ### Database setup
+  rails_command "db:drop" # just in case
   rails_command "db:create"
   rails_command "db:migrate"
 
