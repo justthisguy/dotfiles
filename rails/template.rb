@@ -35,19 +35,25 @@ def add_gems
   gem_group :development, :test do
     gem "database_cleaner"
     gem "factory_bot_rails"
+    gem 'letter_opener_web', '~> 3.0'
     gem "rspec-rails"
   end
 
   gem_group :development do
+    gem "ruby-lsp"
+    gem "ruby-lsp-rails"
+    gem "ruby-lsp-rspec"
     gem "ruby-lsp-rails-factory-bot"
+    gem "ruby-lsp-shoulda-context"
 
     # for solargraph
-    gem "solargraph"
-    gem "standard"
-    gem "rubocop"
+    # gem "solargraph"
+    # gem "standard"
+    # gem "rubocop"
   end
 
   gem_group :test do
+    gem 'shoulda-matchers', '~> 6.0'
     gem "simplecov", require: false
   end
 
@@ -93,6 +99,8 @@ def config_routes
   insert_into_file "config/routes.rb", "  get 'contact' => 'pages#contact', as: 'contact_us'\n", before: "\nend"
   insert_into_file "config/routes.rb", "  get 'about'   => 'pages#about',   as: 'about'\n"     , before: "\nend"
 
+  insert_into_file "config/routes.rb", "\n\n  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?\n", before: "\nend"
+
   git_commit "configures routes"
 end
 
@@ -111,11 +119,17 @@ git_commit "Initial commit"
 say "\n\nLet's build a fresh new Rails app 🦾 \n\n", :cyan
 
 
+# insert_into_file "README.md", "# Welcome to #{@app_name.capitalize}\n\n"
+
+
 # Main setup
 source_paths
 directory "~/.dotfiles/rails/app/",  "app/"
 directory "~/.dotfiles/rails/lib/",  "lib/"
-directory "~/.dotfiles/rails/spec/",  "spec/"
+directory "~/.dotfiles/rails/spec/", "spec/"
+
+copy_file "~/.dotfiles/rails/README.md", "README.md", force: true
+copy_file "~/.dotfiles/rails/Thorfile",  "Thorfile",  force: true
 environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development'
 
 git_commit "adds my files"
@@ -202,13 +216,6 @@ end
 #   directory "lib", force: true
 #   directory "spec", force: true
 # end
-
-# def config_stimulus
-#   puts "*********** start config_stimulus"
-#   # Add Stimulus for JavaScript
-#   rails_command "stimulus:install"
-# end
-
 
 # def config_user
 # +* given name

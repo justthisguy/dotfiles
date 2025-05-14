@@ -3,4 +3,4 @@
 --skip-system-test
 --asset-pipeline=propshaft
 --css=tailwind
--m ~/.dotfiles/template.rb
+-m ~/.dotfiles/rails/template.rb
