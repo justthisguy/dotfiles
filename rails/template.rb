@@ -13,15 +13,15 @@
 # Functions defined ( called below )
 ########################################
 def git_commit comment
-  say  "============== git commit #{comment}!", :cyan
   git add: "."
   git commit: %Q{ -m "#{comment}!" }
+  say  "============== git commit #{comment}!\n\n", :cyan
 end
 
 
 def add_gems
   # Add necessary gems to the Gemfile
-  puts "++++++++++++++ gems added"
+  puts "++++++++++++++ gems added", :cyan
 
   ### Auth with Rodauth
   gem "rodauth-rails", "~> 2.0"
@@ -45,6 +45,8 @@ def add_gems
     gem "ruby-lsp-rspec"
     gem "ruby-lsp-rails-factory-bot"
     gem "ruby-lsp-shoulda-context"
+
+    gem 'faker'
 
     # for solargraph
     # gem "solargraph"
@@ -105,6 +107,14 @@ def config_routes
 end
 
 
+def build_profiles
+  generate "scaffold profile name_given:string name_family:string name_others:string nickname:string location:string description:string image:string user:references"
+  remove_file "spec/factories/profiles.rb", force: true
+  puts "++++++++++++++ build_profiles done", :cyan
+end
+
+
+
 
 ########################################
 # Where the magic happens
@@ -146,10 +156,29 @@ after_bundle do
   config_rspec
   config_flowbite
   config_rodauth_rails
+  build_profiles
 
+
+
+  # insert_into_file "app/controllers/application_controller.rb", before: "end" do
+  #   add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )
+
+  #   private
+
+  #   def current_user
+  #     rodauth.rails_account
+  #   end
+  #   helper_method :current_user
+
+  # end
+
+
+  inject_into_file("app/models/user.rb",
+                   "  has_one :profile\n",
+                   before: "end")
 
   inject_into_file("app/controllers/application_controller.rb",
-                   "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n",
+                   "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n\n    private\n\n    def current_user\n      rodauth.rails_account\n    end\n    helper_method :current_user\n",
                    before: "end")
 
   insert_into_file "app/views/layouts/application.html.erb",
@@ -162,6 +191,7 @@ after_bundle do
   rails_command "db:migrate"
 
   rails_command "user:create_first"
+  # rails_command "profile:create"
 
   git_commit "Final from Template"
 
