@@ -28,9 +28,12 @@ def add_gems
   ## for when we add phlex # gem "rodauth_phlex"
 
   ### design and CSS
-  gem "tailwindcss-ruby"
+  gem "tabler_icons_ruby"
+  # gem 'bootstrap', '~> 5.1.3'
+  # gem 'sassc-rails', '~> 2.1'
+  # gem "tailwindcss-ruby"
   # gem "tailwindcss-rails" # included by default
-  gem "flowbite", "~> 3.1"
+  # gem "flowbite", "~> 3.1"
 
   gem_group :development, :test do
     gem "database_cleaner"
@@ -80,13 +83,13 @@ def config_rodauth_rails
 end
 
 
-def config_flowbite
-  insert_into_file "app/javascript/application.js", "import 'flowbite';\n"
-  insert_into_file "config/importmap.rb", "pin 'flowbite', to: 'https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.turbo.min.js'"
-  insert_into_file "app/views/layouts/application.html.erb", "  <div class='w-full fixed top-0 left-0 right-0 z-50'>\n    <%= render 'layouts/navbar' %>\n  </div>\n", after: "<body>\n"
+# def config_flowbite
+#   insert_into_file "app/javascript/application.js", "import 'flowbite';\n"
+#   insert_into_file "config/importmap.rb", "pin 'flowbite', to: 'https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.turbo.min.js'"
+#   insert_into_file "app/views/layouts/application.html.erb", "  <div class='w-full fixed top-0 left-0 right-0 z-50'>\n    <%= render 'layouts/navbar' %>\n  </div>\n", after: "<body>\n"
 
-  git_commit "does flowbite setup"
-end
+#   git_commit "does flowbite setup"
+# end
 
 
 def config_routes
@@ -154,9 +157,10 @@ after_bundle do
 
   config_routes
   config_rspec
-  config_flowbite
+  # config_flowbite
   config_rodauth_rails
   build_profiles
+  # run git mv
 
 
 
@@ -181,9 +185,37 @@ after_bundle do
                    "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n\n    private\n\n    def current_user\n      rodauth.rails_account\n    end\n    helper_method :current_user\n",
                    before: "end")
 
+### application.html.erb
   insert_into_file "app/views/layouts/application.html.erb",
-                   "      <div><%= render 'layouts/alert'%></div>\n\n",
-                   after: /<main [\w=" -]+>\n/
+                   "\n    <script src= 'https://cdn.jsdelivr.net/npm/@tabler/core@1.2.0/dist/js/tabler.min.js'></script>",
+                   before: /\n[ ]+<\/head>/
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "\n    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@tabler/core@1.2.0/dist/css/tabler.min.css'>\n",
+                   before: /\n[ ]+<\/head>/
+
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/navbar' %></div>\n\n",
+                   after: "<body>\n"
+
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "    <main>\n      <div><%= render 'layouts/alert'%></div>\n",
+                   before: /\n[ ]+<%= yield %>/
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "\n    </main>\n",
+                   after: "<%= yield %>\n"
+
+
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "  ",
+                   before: "<%= yield %>\n",
+                   force: true
+
+                    # /<main [\w=" -]+>\n/
+
 
   ### Database setup
   rails_command "db:drop" # just in case

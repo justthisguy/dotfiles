@@ -2,5 +2,4 @@
 --skip-test-unit
 --skip-system-test
 --asset-pipeline=propshaft
---css=tailwind
 -m ~/.dotfiles/rails/template.rb
