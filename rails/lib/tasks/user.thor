@@ -9,5 +9,6 @@ class User < Thor
     user = FactoryBot.create(:user, email: 'foo@bar.com', password: 'asdfasdf', status: 'verified')
     profile.image = 'jeff.jpg'
     profile.name_given = 'jeff'
+    profile.save
   end
 end
