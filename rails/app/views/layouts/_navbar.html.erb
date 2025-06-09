@@ -12,9 +12,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a href="../../.." aria-label="Tabler" class="navbar-brand navbar-brand-autodark me-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 68 68" class="navbar-brand-image">
-      <path class="tablers_icon" />
+    <a href="/" aria-label="home" class="navbar-brand navbar-brand-autodark me-3">
+      <span class="nav-link-icon" style="color: red;"><%= tabler_icon('fall') %></span>
       <span>my app</span>
     </a>
 
@@ -31,27 +30,6 @@
           <span class="nav-link-title"> Welcome </span>
         <% end %>
       </li>
-      <li class="nav-item active">
-        <%= link_to contact_us_path, class: "nav-link" do %>
-          <span class="nav-link-icon"><%= tabler_icon('users-group') %></span>
-          <span class="nav-link-title"> Contact Us </span>
-        <% end %>
-      </li>
-
-
-      <li class="nav-item active">
-        <%= link_to terms_path, class: "nav-link" do %>
-          <span class="nav-link-icon"><%= tabler_icon('clipboard-data') %></span>
-          <span class="nav-link-title"> Terms </span>
-        <% end %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to privacy_path, class: "nav-link" do %>
-          <span class="nav-link-icon"><%= tabler_icon('shield-half') %></span>
-          <span class="nav-link-title"> Privacy </span>
-        <% end %>
-      </li>
-
 
       <li>
         <button id="theme-toggle" class="btn btn-primary">Toggle Dark Mode</button>
@@ -65,7 +43,6 @@
         });
         </script>
       </li>
-
     </ul>
 
               <%# style="background-image: url(/images/image.jpg)" %>

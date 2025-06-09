@@ -208,6 +208,10 @@ after_bundle do
                    "\n    </main>\n",
                    after: "<%= yield %>\n"
 
+  insert_into_file "app/views/layouts/application.html.erb",
+                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/footer' %></div>",
+                   after: "</main>\n",
+                   force: true
 
   insert_into_file "app/views/layouts/application.html.erb",
                    "  ",
