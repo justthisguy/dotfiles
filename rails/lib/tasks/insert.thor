@@ -19,3 +19,12 @@ class Insert < Thor
   end
 end
 
+### examples
+# thor insert:after "app/views/layouts/application.html.erb"  "A$(echo -e '\n\n\n\n')Z"  "$(echo -e '/<main [\w=\" -]+>\n/')"
+# thor insert:after "app/views/layouts/application.html.erb"  "      <div><%= render 'layouts/alert'%></div>/\n"  "$(echo -e '/<main [\w=\" -]+>\n/')"
+# thor insert:after "app/views/layouts/application.html.erb"  "      <div><%= render 'layouts/alert'%></div>$(echo -e '\n')"  "<main [\w=\" -]+>\n"
+# thor insert:after "app/views/layouts/application.html.erb"  "  <div><%= render 'layouts/alert'%></div>$(echo -e '\n')"  "$(echo -e '</head>')"
+# thor insert:before "app/views/layouts/application.html.erb", "ADDITIONAL", "<main"
+# thor insert:into "app/views/layouts/application.html.erb", "ADDITIONAL"
+# thor insert:after "application.html.erb", "  <div><%= render 'layouts/alert'%></div>$(echo -e '\n')", "$(echo -e '/<main [\w=\" -]+>\n/')"
+# thor insert:before "Rakefile" "this is quux" "$(echo -e '\nrequire_relative')" "$(echo -e '\n')"
