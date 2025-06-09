@@ -10,6 +10,7 @@ namespace :user do
   desc "Create the first new user"
   task create_first: :environment do
     user = FactoryBot.create(:user, email: 'foo@bar.com', password: 'asdfasdf', status: 'verified')
+    profile = user.profile
     profile.image = 'jeff.jpg'
     profile.name_given = 'jeff'
     profile.save
