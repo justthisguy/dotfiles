@@ -164,26 +164,35 @@ after_bundle do
 
 
 
-  # insert_into_file "app/controllers/application_controller.rb", before: "end" do
-  #   add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )
 
-  #   private
+  insert_into_file "app/controllers/application_controller.rb", before: "end" do
+"
+  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )
 
-  #   def current_user
-  #     rodauth.rails_account
-  #   end
-  #   helper_method :current_user
+  private
 
-  # end
+  def current_user
+   rodauth.rails_account
+  end
+  helper_method :current_user
+
+  def the_current_account
+   return nil unless request.env['rodauth'].account!
+
+   Account.instantiate request.env['rodauth'].account!&.stringify_keys
+  end
+  helper_method :the_current_account
+"
+  end
 
 
   inject_into_file("app/models/user.rb",
                    "  has_one :profile\n",
                    before: "end")
 
-  inject_into_file("app/controllers/application_controller.rb",
-                   "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n\n    private\n\n    def current_user\n      rodauth.rails_account\n    end\n    helper_method :current_user\n",
-                   before: "end")
+  # inject_into_file("app/controllers/application_controller.rb",
+  #                  "  add_flash_types :success, :warning # native :notice ( use for info ), :alert ( use for error )\n\n    private\n\n    def current_user\n      rodauth.rails_account\n    end\n    helper_method :current_user\n",
+  #                  before: "end")
 
 ### application.html.erb
   insert_into_file "app/views/layouts/application.html.erb",
@@ -194,22 +203,21 @@ after_bundle do
                    "\n    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@tabler/core@1.2.0/dist/css/tabler.min.css'>\n",
                    before: /\n[ ]+<\/head>/
 
-
   insert_into_file "app/views/layouts/application.html.erb",
-                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/navbar' %></div>\n\n",
+                   "    <main>\n      <div><%= render 'layouts/alert'%></div>\n",
                    after: "<body>\n"
 
 
   insert_into_file "app/views/layouts/application.html.erb",
-                   "    <main>\n      <div><%= render 'layouts/alert'%></div>\n",
-                   before: /\n[ ]+<%= yield %>/
+                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/navbar' %></div>\n\n",
+                   after: "<body>\n"
 
   insert_into_file "app/views/layouts/application.html.erb",
                    "\n    </main>\n",
                    after: "<%= yield %>\n"
 
   insert_into_file "app/views/layouts/application.html.erb",
-                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/footer' %></div>",
+                   "    <div class='w-full fixed top-0 left-0 right-0 z-50'><%= render 'layouts/footer' %></div>\n",
                    after: "</main>\n",
                    force: true
 
