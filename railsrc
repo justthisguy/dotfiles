@@ -1,5 +1,0 @@
---database=postgresql
---skip-test-unit
---skip-system-test
---asset-pipeline=propshaft
--m ~/.dotfiles/rails/template.rb
