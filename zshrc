@@ -1,6 +1,6 @@
 # echo 'start my .zshrc'
 # echo $PATH
-# echo ------------------
+# echo my zshrc ------------------
 
 
 # Path to your oh-my-zsh configuration.
@@ -61,19 +61,6 @@ source ~/.shell_alias_and_export
 
 
 ##
-## PATH
-##
-
-homebrew=/opt/homebrew/bin:/usr/local/bin
-sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
-windsurf="/Users/workshop/.codeium/windsurf/bin"
-
-export PATH=./bin:~/bin:/bin:$homebrew:$PATH:$sublime:$windsurf:
-
-# echo $PATH
-
-
-##
 ## zsh-completions
 ##
 if type brew &>/dev/null; then
@@ -84,14 +71,28 @@ if type brew &>/dev/null; then
 fi
 
 ### mise-en-place < https://mise.jdx.dev/ >
-eval "$(/Users/workshop/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
 
 ### fzf
 source <(fzf --zsh)
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+##
+## PATH
+##
 
-# echo 'end my .zshrc'
+homebrew=/opt/homebrew/bin:/usr/local/bin
+sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+windsurf="~/.codeium/windsurf/bin"
+lmstudio="~/.lmstudio/bin"
 
+export PATH=./bin:~/bin:/bin:$homebrew:$sublime:$windsurf:$lmstudio:$PATH:
+
+
+# echo $PATH
+# echo end my .zshrc
+# echo ---------------
+# echo ''
 
 
 
@@ -101,4 +102,10 @@ source <(fzf --zsh)
 # to load these completions, you may need to run this:
 
 #   chmod -R go-w '/usr/local/share/zsh'
+
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/workshop/.lmstudio/bin"
+# End of LM Studio CLI section
 
