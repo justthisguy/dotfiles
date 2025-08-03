@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rails new $1 -m ~/.rails_template/null.rb
